@@ -196,6 +196,7 @@ PRODUCT_PACKAGES += \
     libQcomUI \
     com.android.future.usb.accessory \
     e2fsck \
+    librpc \
     camera.msm7x27
 
 
