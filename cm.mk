@@ -35,5 +35,6 @@ PRODUCT_NAME := cm_legend
 PRODUCT_BRAND := Htc
 PRODUCT_MODEL := Legend
 
-#Set build fingerprint / ID / Prduct Name ect.
 
+#Set build fingerprint / ID / Prduct Name ect.
+PRODUCT_VERSION_DEVICE_SPECIFIC := -BETA3
