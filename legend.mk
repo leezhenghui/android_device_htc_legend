@@ -187,6 +187,11 @@ PRODUCT_PACKAGES += \
     gps.legend \
     libmm-omxcore \
     libOmxCore \
+    libdivxdrmdecrypt \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxVdec \
+    libOmxVenc \
     libstagefrighthw \
     hwcomposer.default \
     hwcomposer.msm7x27 \
