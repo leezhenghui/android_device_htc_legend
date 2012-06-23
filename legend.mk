@@ -140,7 +140,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
     debug.qctwa.statusbar=1 \
     debug.qctwa.preservebuf=1 \
-    debug.camcorder.disablemeta=1	
+    debug.camcorder.disablemeta=1
 
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -187,11 +187,6 @@ PRODUCT_PACKAGES += \
     gps.legend \
     libmm-omxcore \
     libOmxCore \
-    libdivxdrmdecrypt \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxVdec \
-    libOmxVenc \
     libstagefrighthw \
     hwcomposer.default \
     hwcomposer.msm7x27 \
