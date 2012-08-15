@@ -106,7 +106,6 @@ LOCAL_KERNEL := device/htc/legend/prebuilt/kernel
 
 #TARGET_PREBUILT_RECOVERY_KERNEL := device/htc/legend/prebuilt/recovery_kernel
 #BOARD_USES_RECOVERY_CHARGEMODE := true
-TARGET_RECOVERY_INITRC := device/htc/legend/init.recovery.rc
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
