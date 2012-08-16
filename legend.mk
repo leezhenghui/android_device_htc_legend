@@ -143,19 +143,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.camcorder.disablemeta=1
 
 PRODUCT_COPY_FILES += \
-    frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
-    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
-    frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
-
+    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 PRODUCT_COPY_FILES += \
     device/htc/legend/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml
@@ -171,6 +160,10 @@ PRODUCT_COPY_FILES += \
     device/htc/legend/prebuilt/etc/init.d/05mountsd:system/etc/init.d/05mountsd
 
 PRODUCT_COPY_FILES += \
+    device/htc/legend/audio_policy.conf:system/etc/audio_policy.conf
+
+
+PRODUCT_COPY_FILES += \
     device/htc/legend/prebuilt/modules/sdio.ko:system/lib/modules/sdio.ko \
     device/htc/legend/prebuilt/modules/tiwlan_drv.ko:system/lib/modules/tiwlan_drv.ko \
     device/htc/legend/prebuilt/modules/tiap_drv.ko:system/lib/modules/tiap_drv.ko \
@@ -178,28 +171,10 @@ PRODUCT_COPY_FILES += \
 
 
 PRODUCT_PACKAGES += \
-    librs_jni \
-    lights.legend \
-    gralloc.msm7x27 \
-    copybit.msm7x27 \
-    sensors.legend \
-    audio.primary.legend \
-    audio_policy.legend \
-    audio.a2dp.default \
+    camera.msm7x27 \
     gps.legend \
-    libmm-omxcore \
-    libOmxCore \
-    libstagefrighthw \
-    hwcomposer.default \
-    hwcomposer.msm7x27 \
-    libgenlock \
-    libmemalloc \
-    libtilerenderer \
-    libQcomUI \
-    com.android.future.usb.accessory \
-    e2fsck \
-    librpc \
-    camera.msm7x27
+    lights.legend \
+    sensors.legend
 
 
 #WiFi stuff
