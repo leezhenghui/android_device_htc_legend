@@ -186,3 +186,6 @@ service map /system/bin/sdptool add --channel=16 MAS
     group bluetooth net_bt_admin
     disabled
     oneshot
+
+
+
