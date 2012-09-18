@@ -31,7 +31,6 @@ DEVICE_PACKAGE_OVERLAYS := device/htc/legend/overlay
 # Keylayouts
 PRODUCT_COPY_FILES += \
     device/htc/legend/prebuilt/legend-keypad.kl:system/usr/keylayout/legend-keypad.kl \
-    device/htc/legend/prebuilt/legend-keypad.kcm.bin:system/usr/keychars/legend-keypad.kcm.bin \
     device/htc/legend/prebuilt/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
     device/htc/legend/prebuilt/usr/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl \
     device/htc/legend/prebuilt/usr/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl
@@ -66,7 +65,12 @@ PRODUCT_COPY_FILES += \
     device/htc/legend/prebuilt/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
     device/htc/legend/prebuilt/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
     device/htc/legend/prebuilt/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    device/htc/legend/prebuilt/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
+    device/htc/legend/prebuilt/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
+    device/htc/legend/prebuilt/etc/firmware/a225p5_pm4.fw:system/etc/firmware/a225p5_pm4.fw \
+    device/htc/legend/prebuilt/etc/firmware/a225_pfp.fw:system/etc/firmware/a225_pfp.fw \
+    device/htc/legend/prebuilt/etc/firmware/a225_pm4.fw:system/etc/firmware/a225_pm4.fw \
+    device/htc/legend/prebuilt/etc/firmware/a300_pfp.fw:system/etc/firmware/a300_pfp.fw \
+    device/htc/legend/prebuilt/etc/firmware/a300_pm4.fw:system/etc/firmware/a300_pm4.fw 
 
 
 PRODUCT_COPY_FILES += \
@@ -74,6 +78,9 @@ PRODUCT_COPY_FILES += \
     device/htc/legend/init.legend.usb.rc:root/init.legend.usb.rc \
     device/htc/legend/ueventd.legend.rc:root/ueventd.legend.rc
 
+# Override /proc/sys/vm/dirty_ratio on UMS
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vold.umsdirtyratio=20
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -143,8 +150,24 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.camcorder.disablemeta=1
 
 PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+
+
+
 
 PRODUCT_COPY_FILES += \
     device/htc/legend/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml
@@ -171,11 +194,28 @@ PRODUCT_COPY_FILES += \
 
 
 PRODUCT_PACKAGES += \
-    camera.msm7x27 \
+    librs_jni \
+    gralloc.msm7x27 \
+    copybit.msm7x27 \
+    sensors.legend \
+    lights.msm7x27 \
+    audio.a2dp.default \
+    audio_policy.msm7x27 \
+    audio.primary.msm7x27 \
+    libtinyalsa \
+    libaudioutils \
+    libmm-omxcore \
+    libOmxCore \
+    libstagefrighthw \
+    libgenlock \
+    libmemalloc \
+    liboverlay \
+    libqdutils \
+    libtilerenderer \
+    e2fsck \
+    librpc-qcom \
     gps.legend \
-    lights.legend \
-    sensors.legend
-
+    camera.msm7x27
 
 #WiFi stuff
 PRODUCT_PACKAGES += \
@@ -187,12 +227,12 @@ PRODUCT_PACKAGES += \
     libCustomWifi
 
 #HotSpot
-PRODUCT_PACKAGES += \
-   tiap_loader \
-    tiap_cu \
-    tiwlan_ap.ini \
-    hostap \
-    hostapd.conf
+#PRODUCT_PACKAGES += \
+#   tiap_loader \
+#    tiap_cu \
+#    tiwlan_ap.ini \
+#    hostap \
+#    hostapd.conf
 
 
 #media profiles and capabilities spec
@@ -203,8 +243,28 @@ $(call inherit-product, device/htc/legend/media_a1026.mk)
 #PRODUCT_COPY_FILES += \
 #    device/htc/legend/prebuilt/lib/libcamera.so:obj/lib/libcamera.so
 
+# Misc
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory \
+    Superuser
 
-# PRODUCT_LOCALES += mdpi
+### Artwork
+PRODUCT_LOCALES += mdpi
+
+PRODUCT_AAPT_CONFIG := normal mdpi
+PRODUCT_AAPT_PREF_CONFIG := mdpi
+
+
+
+### Add system daemons
+PRODUCT_PACKAGES += \
+    rild
+
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    setup_fs
+
 
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 $(call inherit-product, device/htc/common/common.mk)
