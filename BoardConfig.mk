@@ -23,9 +23,7 @@
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
-USE_CAMERA_STUB := false
-BOARD_USE_FROYO_LIBCAMERA := true
-JS_ENGINE:=v8
+
 
 # inherit from the proprietary version
 -include vendor/htc/legend/BoardConfigVendor.mk
@@ -42,10 +40,12 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
 
+TARGET_PROVIDES_LIBLIGHTS := true
+
 TARGET_BOOTLOADER_BOARD_NAME := legend
 TARGET_PROVIDES_INIT_TARGET_RC := true
 
-TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
+#TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 
 BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
 BOARD_WLAN_DEVICE := wl1271
@@ -57,7 +57,12 @@ WIFI_FIRMWARE_LOADER := wlan_loader
 WIFI_EXT_MODULE_PATH := /system/lib/modules/sdio.ko
 WIFI_EXT_MODULE_NAME := sdio
 
+### Audio
 BOARD_USES_GENERIC_AUDIO := false
+BOARD_PREBUILT_LIBAUDIO := false
+BOARD_USES_QCOM_AUDIO_VOIPMUTE := true
+BOARD_USES_QCOM_AUDIO_RESETALL := true
+
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x12c00000
 
@@ -108,28 +113,69 @@ LOCAL_KERNEL := device/htc/legend/prebuilt/kernel
 #BOARD_USES_RECOVERY_CHARGEMODE := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
+#BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+#BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+
+### USB Mass Storage
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+
+# WITH_DEXPREOPT := true
+
+
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DREFRESH_RATE=60
+USE_OPENGL_RENDERER := true
+TARGET_USES_GENLOCK := true
+
+TARGET_USES_C2D_COMPOSITION := false
+TARGET_USES_SF_BYPASS := false
+TARGET_HAVE_BYPASS := false
+TARGET_USES_OVERLAY := false
+TARGET_QCOM_HDMI_OUT := false
+TARGET_GRALLOC_USES_ASHMEM := false
+# Backwards compatibility with ICS GPU drivers
+# Remove when (and if) Qualcomm releases Jelly Bean drivers for ARMv6
+COMMON_GLOBAL_CFLAGS += -DQCOM_ICS_COMPAT
+# Disable HW VSYNC, kernel does not support it (yet)
+TARGET_NO_HW_VSYNC := true
+
+COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
+
+
+### Boot animation
+TARGET_BOOTANIMATION_USE_RGB565 := true
+TARGET_SCREEN_HEIGHT := 480
+TARGET_SCREEN_WIDTH := 320
+
+### QCOM
+BOARD_USES_QCOM_HARDWARE := true
+BOARD_USES_QCOM_LIBS := true
+#BOARD_USES_QCOM_LIBRPC := true
+BOARD_USES_QCOM_GPS := true
+BOARD_USE_QCOM_PMEM := true
+
+
+### Browser
+HTTP := chrome
+ENABLE_WEBGL := true
+
+
+### Dalvik
+# If WITH_JIT is configured, build multiple versions of libdvm.so to facilitate
+# correctness/performance bugs triage
+WITH_JIT := true
+JS_ENGINE := v8
+ENABLE_JSC_JIT := true
 
 # Fix for Atmel touchscreens; trackball button
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 BOARD_USE_LEGACY_TRACKPAD := true
 
-WITH_DEXPREOPT := true
-HTTP := chrome
-
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DREFRESH_RATE=60
-USE_OPENGL_RENDERER := true
-BOARD_USES_QCOM_HARDWARE := true
-BOARD_USES_QCOM_LIBS := true
-TARGET_USES_GENLOCK := true
-
-
-# Enable WEBGL in WebKit
-ENABLE_WEBGL := true
 
 # Camera 
+USE_CAMERA_STUB := false
+BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
+BOARD_NEEDS_MEMORYHEAPPMEM := true
 COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
 
 
