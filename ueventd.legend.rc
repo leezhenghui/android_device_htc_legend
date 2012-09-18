@@ -1,33 +1,10 @@
 #bluetooth
-/dev/ttyHS0              0600 bluetooth bluetooth
+/dev/ttyHS0              0600   bluetooth bluetooth
 
 #graphics
-/dev/kgsl*               0777   root    root
-/dev/pmem                0666   system    graphics
-/dev/graphics/fb0        0666   system    graphics
-/dev/msm_rotator         0660   system    graphics
-/dev/genlock             0777   system    graphic
-/dev/kgsl-3d0 0666 root root
-/dev/kgsl-2d0 0666 root root
-/dev/kgsl-2d1 0666 root root
+/dev/kgsl-3d0            0666   system    graphics
+/dev/genlock             0666   system    graphics
+/dev/graphics/fb0        0660   media     graphics
 
-# audio devices
-/dev/cpu_dma_latency	 0660   system    system
-/dev/msm_aac             0660   system    audio
-
-
-/dev/smd9               0660    system     system
-
-
-#permissions for video
-/dev/msm_vidc* 0777 system graphics
-
-
-#  camera
-/dev/msm_camera/*        0660   system    camera
-/dev/pmem_audio           0660   system     audio
-/dev/pmem_adsp*           0660   system     audio
-/dev/pmem_smipool*        0660   system     camera
-/dev/pmem_camera*         0660   system     camera
-
-
+#camera
+/dev/msm_camera/*        0660   media     system
