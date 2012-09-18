@@ -13,6 +13,7 @@
 #define _MSM_MDP_H_
 
 #include <linux/types.h>
+#include <linux/fb.h>
 
 #ifndef uint32_t
 typedef __u32 uint32_t;
@@ -45,12 +46,13 @@ enum {
  MDP_RGBA_8888,                    // ARGB 888
  MDP_BGRA_8888,                    // ARGB 888
  MDP_RGBX_8888,                    // RGBX 888
-#if 0 // disabled for legend in kernel
  MDP_Y_CRCB_H2V2_TILE,             // Y and CrCb, pseudo planer tile
  MDP_Y_CBCR_H2V2_TILE,             // Y and CbCr, pseudo planer tile
-#endif
  MDP_Y_CR_CB_H2V2,                 // Y, Cr and Cb, planar
+ MDP_Y_CR_CB_GH2V2,                // Y, Cr and Cb, planar aligned to Android YV12
  MDP_Y_CB_CR_H2V2,                 // Y, Cb and Cr, planar
+ MDP_Y_CRCB_H1V1,                  // Y and CrCb, pseduo planer w/ Cr is in MSB
+ MDP_Y_CBCR_H1V1,                  // Y and CbCr, pseduo planer w/ Cb is in MSB
  MDP_IMGTYPE_LIMIT,                // Non valid image type after this enum
  MDP_BGR_565 = MDP_IMGTYPE2_START, // BGR 565 planer
  MDP_FB_FORMAT,                    // framebuffer format
@@ -62,9 +64,6 @@ enum {
  * to be defined for compilation
  * */
 #define MDP_Y_CBCR_H2V2_ADRENO MDP_Y_CBCR_H2V2
-#define MDP_Y_CBCR_H2V2_TILE   MDP_Y_CBCR_H2V2
-#define MDP_Y_CRCB_H2V2_TILE   MDP_Y_CRCB_H2V2
-#define MDP_Y_CR_CB_GH2V2      MDP_Y_CR_CB_H2V2
 
 enum {
  PMEM_IMG,
@@ -87,9 +86,9 @@ enum {
 #define MDP_OV_PLAY_NOWAIT 0x00200000
 #define MDP_SOURCE_ROTATED_90 0x00100000
 #define MDP_BORDERFILL_SUPPORTED 0x00010000
+#define MDP_BACKEND_COMPOSITION 0x00040000
 #define MDP_MEMORY_ID_TYPE_FB 0x00001000
 #define MDP_SECURE_OVERLAY_SESSION 0x00008000
-#define MDP_BACKEND_COMPOSITION  0x00040000
 
 #define MDP_TRANSP_NOP 0xffffffff
 #define MDP_ALPHA_NOP 0xff
