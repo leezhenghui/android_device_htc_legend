@@ -1,0 +1,3 @@
+require board=legend
+require version-bootloader=*
+require version-baseband=*
