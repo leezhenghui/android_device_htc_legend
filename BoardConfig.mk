@@ -132,5 +132,7 @@ ENABLE_WEBGL := true
 
 # Camera 
 COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
+# Testing Modified libstagefright to use legacy Qualcomm OMX IL libs on ICS for MSM7x27 SoCs
+COMMON_GLOBAL_CFLAGS += -DQCOM_LEGACY_OMX
 
 
