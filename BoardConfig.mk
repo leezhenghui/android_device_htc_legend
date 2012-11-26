@@ -26,7 +26,7 @@
 USE_CAMERA_STUB := false
 
 # inherit from common msm7x27
--include device/htc/msm7x27-common/BoardConfigCommon.mk
+-include device/htc/msm7x27-tiwlan-common/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/htc/legend/BoardConfigVendor.mk

@@ -108,7 +108,7 @@ PRODUCT_COPY_FILES += \
     device/htc/legend/prebuilt/lib/libcamera.so:obj/lib/libcamera.so
 
 # inherit from common msm7x27
-$(call inherit-product, device/htc/msm7x27-common/msm7x27.mk)
+$(call inherit-product, device/htc/msm7x27-tiwlan-common/msm7x27.mk)
 
 $(call inherit-product, build/target/product/full_base_telephony.mk)
 
