@@ -82,13 +82,11 @@ PRODUCT_COPY_FILES += \
     device/htc/legend/prebuilt/modules/tiap_drv.ko:system/lib/modules/tiap_drv.ko
 
 #WiFi stuff
+#WiFi stuff
 PRODUCT_PACKAGES += \
     wpa_supplicant.conf \
     tiwlan.ini \
-    dhcpcd.conf \
-    wlan_cu \
-    wlan_loader \
-    libCustomWifi
+    dhcpcd.conf 
 
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/legend/legend-vendor.mk)
