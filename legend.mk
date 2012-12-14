@@ -72,6 +72,7 @@ PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
     device/htc/legend/prebuilt/bin/trackballwake:system/bin/trackballwake \
     device/htc/legend/prebuilt/etc/init.d/05mountsd:system/etc/init.d/05mountsd \
+    device/htc/legend/prebuilt/etc/init.d/09sdio:system/etc/init.d/09sdio \
     device/htc/legend/prebuilt/lib/libcamera.so:system/lib/libcamera.so \
     system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf
 
@@ -81,7 +82,6 @@ PRODUCT_COPY_FILES += \
     device/htc/legend/prebuilt/modules/tiwlan_drv.ko:system/lib/modules/tiwlan_drv.ko \
     device/htc/legend/prebuilt/modules/tiap_drv.ko:system/lib/modules/tiap_drv.ko
 
-#WiFi stuff
 #WiFi stuff
 PRODUCT_PACKAGES += \
     wpa_supplicant.conf \
