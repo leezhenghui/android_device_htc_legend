@@ -86,7 +86,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     wpa_supplicant.conf \
     tiwlan.ini \
-    dhcpcd.conf 
+    dhcpcd.conf \
+    wlan_cu \
+    wlan_loader \
+    libCustomWifi
 
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/legend/legend-vendor.mk)
