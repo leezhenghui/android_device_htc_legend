@@ -32,7 +32,7 @@ USE_CAMERA_STUB := false
 -include vendor/htc/legend/BoardConfigVendor.mk
 
 TARGET_BOOTLOADER_BOARD_NAME := legend
-
+TARGET_PROVIDES_LIBRIL := device/htc/legend/prebuilt/system/lib/libhtc_ril.so
 TARGET_PROVIDES_INIT_TARGET_RC := true
 
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
