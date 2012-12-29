@@ -42,7 +42,8 @@ BOARD_VENDOR_USE_AKMD := akm8973
 
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := legend
 
-
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/legend/bluetooth/include
 
 #$ adb shell cat /proc/mtd
 #dev:    size   erasesize  name
